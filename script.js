@@ -1,4 +1,4 @@
-const canvasSize = 500;
+const canvasHeight = 500;
 const slider = document.querySelector(".size-slider");
 const canvas = document.querySelector("#canvas");
 slider.addEventListener("input", changeCanvas);
