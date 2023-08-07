@@ -16,7 +16,7 @@ h1 {
 
 .container {
   width: 80%;
-  max-width: 90ch;
+  max-width: 100ch;
   margin: auto;
   display: flex;
   justify-content: space-between;
@@ -40,12 +40,13 @@ h1 {
 
 .slider p {
   text-align: center;
-  margin: 1rem;
+  margin: 1rem 0 0;
 }
 
 .color-picker {
-  width: 100%;
+  width: 3rem;
   height: 3rem;
+  margin: 0 auto;
 }
 
 .btn-reset {
@@ -72,6 +73,18 @@ h1 {
 
 .btn-border {
   border: 3px solid;
+}
+
+kbd {
+  border: 1px solid;
+  border-radius: 2px;
+  display: inline-block;
+  font-weight: bold; 
+  background-color: #ddd; 
+}
+
+.info p {
+  margin: 2px;
 }
 
 #canvas {
