@@ -11,6 +11,7 @@ borderBtn.addEventListener('click', toggleBorder)
 // random color
 // darkening mode 
 generatePixel();
+rainbowMode()
 
 function resetCanvas() {
   while (canvas.hasChildNodes()) {
@@ -76,4 +77,20 @@ function toggleBorder() {
   for (let i = 0; i < pixel.length; i++) {
     pixel[i].classList.toggle('border-on')
   }
+}
+
+function rainbowMode() {
+  const pixel = document.querySelectorAll("#canvas .divflex div");
+  for (let i = 0; i < pixel.length; i++) {
+    pixel[i].addEventListener("mouseover", (e) => {
+      if (e.ctrlKey === false) {
+        return
+      }
+      pixel[i].style.backgroundColor = getRandomColor();
+    });
+  }
+}
+
+function getRandomColor() {
+  return `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`
 }
