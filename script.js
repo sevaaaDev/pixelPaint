@@ -24,6 +24,7 @@ function generatePixel() {
   let pixelSize = canvasHeight / totalPixelSqrt + "px";
   for (let i = 0; i < totalPixelSqrt; i++) {
     const pixelFlex = document.createElement("div");
+    pixelFlex.classList.add('divflex')
     pixelFlex.style.display = "flex";
     canvas.appendChild(pixelFlex);
     for (let i = 0; i < totalPixelSqrt; i++) {
@@ -43,7 +44,7 @@ function generatePixel() {
 }
 
 function changeColor() {
-  const pixel = document.querySelectorAll("#canvas div");
+  const pixel = document.querySelectorAll("#canvas .divflex div");
   for (let i = 0; i < pixel.length; i++) {
     pixel[i].addEventListener("click", () => {
       pixel[i].style.backgroundColor = getColor();
