@@ -31,6 +31,7 @@ h1 {
 
 .color-picker, .size-slider {
   display: block;
+  margin: 0 auto;
 }
 
 .btn-border {
@@ -46,7 +47,6 @@ h1 {
 .color-picker {
   width: 3rem;
   height: 3rem;
-  margin: 0 auto;
 }
 
 .btn-reset {
