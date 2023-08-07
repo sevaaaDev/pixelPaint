@@ -5,7 +5,9 @@ const eraserBtn = document.querySelector(".btn-eraser");
 const canvas = document.querySelector("#canvas");
 slider.addEventListener("input", changeCanvas);
 resetBtn.addEventListener("click", changeCanvas);
+// TODO
 // eraserBtn.addEventListener("click", erasePixel);
+// show number on slider
 generatePixel();
 
 function resetCanvas() {
@@ -41,6 +43,7 @@ function generatePixel() {
     }
   }
   changeColor();
+  changeSliderNum()
 }
 
 function changeColor() {
@@ -55,4 +58,9 @@ function changeColor() {
 function getColor() {
   const colorPicker = document.querySelector(".color-picker");
   return colorPicker.value;
+}
+
+function changeSliderNum() {
+  const sliderNum = document.querySelector('.slider p')
+  sliderNum.textContent = `${slider.value} x ${slider.value}`
 }
