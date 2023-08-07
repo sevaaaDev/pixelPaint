@@ -1,13 +1,13 @@
 const canvasHeight = 500;
 const slider = document.querySelector(".size-slider");
 const resetBtn = document.querySelector(".btn-reset");
-const eraserBtn = document.querySelector(".btn-eraser");
+const borderBtn = document.querySelector(".btn-border");
 const canvas = document.querySelector("#canvas");
 slider.addEventListener("input", changeCanvas);
 resetBtn.addEventListener("click", changeCanvas);
+borderBtn.addEventListener('click', toggleBorder)
 // TODO
 // eraserBtn.addEventListener("click", erasePixel);
-// show number on slider
 generatePixel();
 
 function resetCanvas() {
@@ -36,8 +36,8 @@ function generatePixel() {
         pixel.style.width = width;
         pixel.style.height = height;
       }
+      pixel.classList.add('border-on')
       pixel.style.backgroundColor = "white";
-      pixel.style.border = "1px solid gray";
       pixel.style.boxSizing = "border-box";
       pixelFlex.appendChild(pixel);
     }
@@ -63,4 +63,11 @@ function getColor() {
 function changeSliderNum() {
   const sliderNum = document.querySelector('.slider p')
   sliderNum.textContent = `${slider.value} x ${slider.value}`
+}
+
+function toggleBorder() {
+  const pixel = document.querySelectorAll("#canvas .divflex div");
+  for (let i = 0; i < pixel.length; i++) {
+    pixel[i].classList.toggle('border-on')
+  }
 }
