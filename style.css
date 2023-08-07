@@ -33,7 +33,7 @@ h1 {
   display: block;
 }
 
-.btn-eraser {
+.btn-border {
   padding: .5em;
   text-align: center;
 }
@@ -70,7 +70,7 @@ h1 {
   border: 3px solid;
 }
 
-.btn-eraser {
+.btn-border {
   border: 3px solid;
 }
 
