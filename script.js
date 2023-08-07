@@ -1,8 +1,12 @@
 const canvasHeight = 500;
 const slider = document.querySelector(".size-slider");
+const resetBtn = document.querySelector(".btn-reset");
+const eraserBtn = document.querySelector(".btn-eraser");
 const canvas = document.querySelector("#canvas");
 slider.addEventListener("input", changeCanvas);
-generatePixel()
+resetBtn.addEventListener("click", changeCanvas);
+// eraserBtn.addEventListener("click", erasePixel);
+generatePixel();
 
 function resetCanvas() {
   while (canvas.hasChildNodes()) {
@@ -12,7 +16,7 @@ function resetCanvas() {
 
 function changeCanvas() {
   resetCanvas();
-  generatePixel()
+  generatePixel();
 }
 
 function generatePixel() {
@@ -35,19 +39,19 @@ function generatePixel() {
       pixelFlex.appendChild(pixel);
     }
   }
-  changeColor()
+  changeColor();
 }
 
 function changeColor() {
-  const pixel = document.querySelectorAll('#canvas div')
+  const pixel = document.querySelectorAll("#canvas div");
   for (let i = 0; i < pixel.length; i++) {
-    pixel[i].addEventListener('click', () => {
-      pixel[i].style.backgroundColor = getColor()
-    })
+    pixel[i].addEventListener("click", () => {
+      pixel[i].style.backgroundColor = getColor();
+    });
   }
 }
 
 function getColor() {
-  const colorPicker = document.querySelector('.color-picker')
-  return colorPicker.value
+  const colorPicker = document.querySelector(".color-picker");
+  return colorPicker.value;
 }
