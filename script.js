@@ -7,7 +7,9 @@ slider.addEventListener("input", changeCanvas);
 resetBtn.addEventListener("click", changeCanvas);
 borderBtn.addEventListener('click', toggleBorder)
 // TODO
-// eraserBtn.addEventListener("click", erasePixel);
+// shift + hover = color white
+// random color
+// darkening mode 
 generatePixel();
 
 function resetCanvas() {
@@ -49,7 +51,11 @@ function generatePixel() {
 function changeColor() {
   const pixel = document.querySelectorAll("#canvas .divflex div");
   for (let i = 0; i < pixel.length; i++) {
-    pixel[i].addEventListener("mouseover", () => {
+    pixel[i].addEventListener("mouseover", (e) => {
+      if (e.shiftKey === true) {
+        pixel[i].style.backgroundColor = 'white';
+        return
+      }
       pixel[i].style.backgroundColor = getColor();
     });
   }
