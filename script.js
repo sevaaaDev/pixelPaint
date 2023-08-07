@@ -2,7 +2,7 @@ const canvasHeight = 500;
 const slider = document.querySelector(".size-slider");
 const canvas = document.querySelector("#canvas");
 slider.addEventListener("input", changeCanvas);
-changeCanvas();
+generatePixel()
 
 function resetCanvas() {
   while (canvas.hasChildNodes()) {
@@ -18,11 +18,11 @@ function changeCanvas() {
 function generatePixel() {
   let totalPixelSqrt = slider.value;
   let pixelSize = canvasHeight / totalPixelSqrt + "px";
-  for (let i = 0; i < width; i++) {
+  for (let i = 0; i < totalPixelSqrt; i++) {
     const pixelFlex = document.createElement("div");
     pixelFlex.style.display = "flex";
     canvas.appendChild(pixelFlex);
-    for (let i = 0; i < width; i++) {
+    for (let i = 0; i < totalPixelSqrt; i++) {
       const pixel = document.createElement("div");
       setPixelSize(pixelSize, pixelSize);
       function setPixelSize(width, height) {
@@ -35,4 +35,19 @@ function generatePixel() {
       pixelFlex.appendChild(pixel);
     }
   }
+  changeColor()
+}
+
+function changeColor() {
+  const pixel = document.querySelectorAll('#canvas div')
+  for (let i = 0; i < pixel.length; i++) {
+    pixel[i].addEventListener('click', () => {
+      pixel[i].style.backgroundColor = getColor()
+    })
+  }
+}
+
+function getColor() {
+  const colorPicker = document.querySelector('.color-picker')
+  return colorPicker.value
 }
