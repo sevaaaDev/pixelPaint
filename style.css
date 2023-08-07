@@ -78,3 +78,7 @@ h1 {
   background-color: white;
   border: 3px solid;
 }
+
+.border-on {
+  border: 1px solid gray;
+}
