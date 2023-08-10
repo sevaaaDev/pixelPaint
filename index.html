@@ -8,27 +8,30 @@
   <title>Pixel Paint</title>
 </head>
 <body>
-  <h1>Pixel Paint</h1>
-  <div class="father-of-container">
-  <div class="container">
-    <div class="panel">
-      <input type="color" class="color-picker">
-      <p class="btn-border">Toggle Border</p>
-      <div class="slider">
-        <input type="range" min="2" max="32" step="1" class="size-slider">
-        <p></p>
+  <header>
+    <h1>Pixel Paint</h1>
+  </header>
+  <main class="father-of-container">
+    <div class="container">
+      <div class="panel">
+        <input type="color" class="color-picker">
+        <p class="btn-border">Toggle Border</p>
+        <div class="slider">
+          <input type="range" min="2" max="32" step="1" class="size-slider">
+          <p></p>
+        </div>
+        <p class="btn-reset">Reset</p>
+        <div class="info">
+          <p><kbd>Shift</kbd> + Hover = Eraser Mode</p>
+          <p><kbd>Ctrl</kbd> + Hover = Rainbow Mode</p>
+          <p><kbd>Alt</kbd> + Hover = Darken Mode</p>
+        </div>
       </div>
-      <p class="btn-reset">Reset</p>
-      <div class="info">
-        <p><kbd>Shift</kbd> + Hover = Eraser Mode</p>
-        <p><kbd>Ctrl</kbd> + Hover = Rainbow Mode</p>
-        <p><kbd>Alt</kbd> + Hover = Darken Mode</p>
-      </div>
+      <div id="canvas"></div>
     </div>
-    <div id="canvas">
-      
-    </div>
-  </div>
-  </div>
+  </main> 
+  <footer>
+    <p>Created By sevaaaDev</p>
+  </footer>
 </body>
 </html>
