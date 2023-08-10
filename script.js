@@ -7,17 +7,9 @@ slider.addEventListener("input", changeCanvas);
 resetBtn.addEventListener("click", changeCanvas);
 borderBtn.addEventListener("click", toggleBorder);
 // TODO
-// shift + hover = color white
-// random color
-// darkening mode
-generatePixel();
-rainbowMode();
-darkenMode();
-
+// change shortcut to button
 function resetCanvas() {
-  while (canvas.hasChildNodes()) {
-    canvas.removeChild(canvas.firstChild);
-  }
+  while (canvas.hasChildNodes()) canvas.removeChild(canvas.firstChild);
 }
 
 function changeCanvas() {
@@ -37,11 +29,7 @@ function generatePixel() {
     canvas.appendChild(pixelFlex);
     for (let i = 0; i < totalPixelSqrt; i++) {
       const pixel = document.createElement("div");
-      setPixelSize(pixelSize, pixelSize);
-      function setPixelSize(width, height) {
-        pixel.style.width = width;
-        pixel.style.height = height;
-      }
+      setPixelSize(pixel, pixelSize, pixelSize);
       pixel.classList.add("border-on");
       pixel.style.backgroundColor = "white";
       pixel.style.boxSizing = "border-box";
@@ -52,15 +40,20 @@ function generatePixel() {
   changeSliderNum();
 }
 
+function setPixelSize(element, width, height) {
+  element.style.width = width;
+  element.style.height = height;
+}
+
 function changeColor() {
   const pixel = document.querySelectorAll("#canvas .divflex div");
   for (let i = 0; i < pixel.length; i++) {
     pixel[i].addEventListener("mouseover", (e) => {
-      if (e.shiftKey === true && e.altKey === false) {
+      if (e.shiftKey && !e.altKey) {
         pixel[i].style.backgroundColor = "white";
         return;
       }
-      if (e.altKey === false){
+      if (!e.altKey) {
         pixel[i].style.backgroundColor = getColor();
       }
     });
@@ -76,31 +69,36 @@ function rainbowMode() {
   const pixel = document.querySelectorAll("#canvas .divflex div");
   for (let i = 0; i < pixel.length; i++) {
     pixel[i].addEventListener("mouseover", (e) => {
-      if (e.ctrlKey === false) {
-        return;
-      }
+      if (!e.ctrlKey) return;
       pixel[i].style.backgroundColor = getRandomColor();
     });
   }
 }
 
 function getRandomColor() {
-  return `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(
-    Math.random() * 255
-  )}, ${Math.floor(Math.random() * 255)})`;
+  return `rgb(
+  ${Math.floor(Math.random() * 255)},
+  ${Math.floor(Math.random() * 255)},
+  ${Math.floor(Math.random() * 255)}
+  )`;
 }
 
 function darkenMode() {
   const pixel = document.querySelectorAll("#canvas .divflex div");
   for (let i = 0; i < pixel.length; i++) {
     pixel[i].addEventListener("mouseover", (e) => {
-      if (e.altKey === false) {
-        return;
-      }
+      if (!e.altKey) return;
       const compStyle = window.getComputedStyle(pixel[i]);
-      const colorValueRGB = compStyle.getPropertyValue('background-color');
-      const colorArr = colorValueRGB.substring(4, colorValueRGB.length-1).replace(/ /g, '').split(',');
-      pixel[i].style.backgroundColor = `rgb(${colorArr[0]-25.5},${colorArr[1]-25.5},${colorArr[2]-25.5})`
+      const colorValueRGB = compStyle.getPropertyValue("background-color");
+      const colorArr = colorValueRGB
+        .substring(4, colorValueRGB.length - 1)
+        .replace(/ /g, "")
+        .split(",");
+      pixel[i].style.backgroundColor = `rgb(
+        ${colorArr[0] - 25.5},
+        ${colorArr[1] - 25.5},
+        ${colorArr[2] - 25.5}
+      )`;
     });
   }
 }
@@ -116,3 +114,5 @@ function toggleBorder() {
     pixel[i].classList.toggle("border-on");
   }
 }
+
+window.addEventListener('load', changeCanvas)
