@@ -1,37 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="script.js" defer></script>
-  <link rel="stylesheet" href="style.css">
-  <title>Pixel Paint</title>
-</head>
-<body>
-  <header>
-    <h1>Pixel Paint</h1>
-  </header>
-  <main class="father-of-container">
-    <div class="container">
-      <div class="panel">
-        <input type="color" class="color-picker">
-        <p class="btn-border">Toggle Border</p>
-        <div class="slider">
-          <input type="range" min="2" max="32" step="1" class="size-slider">
-          <p></p>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
+    <title>Pixel Paint</title>
+  </head>
+  <body>
+    <header>
+      <h1>Pixel Paint</h1>
+    </header>
+    <main class="father-of-container">
+      <div class="container">
+        <div class="panel">
+          <input type="color" class="color-picker">
+          <p class="btn-border">Toggle Border</p>
+          <div class="slider">
+            <input type="range" min="2" max="32" step="1" class="size-slider">
+            <p></p>
+          </div>
+          <p class="btn-reset">Reset</p>
+          <div class="info">
+            <p><kbd>Shift</kbd> + Hover = Eraser Mode</p>
+            <p><kbd>Ctrl</kbd> + Hover = Rainbow Mode</p>
+            <p><kbd>Alt</kbd> + Hover = Darken Mode</p>
+          </div>
         </div>
-        <p class="btn-reset">Reset</p>
-        <div class="info">
-          <p><kbd>Shift</kbd> + Hover = Eraser Mode</p>
-          <p><kbd>Ctrl</kbd> + Hover = Rainbow Mode</p>
-          <p><kbd>Alt</kbd> + Hover = Darken Mode</p>
-        </div>
+        <div id="canvas"></div>
       </div>
-      <div id="canvas"></div>
-    </div>
-  </main> 
-  <footer>
-    <p>Created By sevaaaDev</p>
-  </footer>
-</body>
+    </main>
+    <footer>
+      <p>Created By sevaaaDev</p>
+    </footer>
+  </body>
 </html>
