@@ -59,6 +59,9 @@ h1 {
   height: 500px;
 }
 
+footer p {
+  text-align: center;
+}
 
 /* color */
 
@@ -90,6 +93,10 @@ kbd {
 #canvas {
   background-color: white;
   border: 3px solid;
+}
+
+footer p {
+  font-weight: bold;
 }
 
 .border-on {
