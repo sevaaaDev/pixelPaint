@@ -22,7 +22,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
+  gap: 1rem;
 }
 
 .panel {
@@ -69,30 +69,34 @@ footer p {
 
 /* color */
 
+body {
+  background-color: rgb(177, 80, 10);
+  color: white;
+}
 
 .panel {
-  border: 3px solid;
+  border: 3px solid black;
 }
 
 .btn {
-  border: 3px solid;
+  border: 3px solid black;
 }
 
-kbd {
-  border: 1px solid;
-  border-radius: 2px;
-  display: inline-block;
-  font-weight: bold; 
-  background-color: #ddd; 
+.btn-reset {
+  background-color: red;
 }
 
-.info p {
-  margin: 2px;
+.btn-border {
+  background-color: lightseagreen;
+}
+
+.btn-reset > svg > path{
+  fill: white;
 }
 
 #canvas {
   background-color: white;
-  border: 3px solid;
+  border: 3px solid black;
 }
 
 footer p {
