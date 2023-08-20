@@ -40,9 +40,10 @@ h1 {
   display: block;
 }
 
-.btn-border {
-  padding: .2em;
-  height: 24px;
+.btn-border, .btn-reset {
+  display: flex;
+  justify-content: center;
+  padding: .2rem;
 }
 
 .slider p {
@@ -53,11 +54,6 @@ h1 {
 .color-picker {
   width: 3rem;
   height: 3rem;
-}
-
-.btn-reset {
-  padding: .2em;
-  height: 24px;
 }
 
 #canvas {
@@ -77,11 +73,7 @@ footer p {
   border: 3px solid;
 }
 
-.btn-reset {
-  border: 3px solid;
-}
-
-.btn-border {
+.btn-border, .btn-reset {
   border: 3px solid;
 }
 
