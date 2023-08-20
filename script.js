@@ -1,4 +1,3 @@
-const canvasHeight = 500;
 const slider = document.querySelector(".size-slider");
 const resetBtn = document.querySelector(".btn-reset");
 const borderBtn = document.querySelector(".btn-border");
@@ -6,20 +5,26 @@ const canvas = document.querySelector("#canvas");
 slider.addEventListener("input", changeCanvas);
 resetBtn.addEventListener("click", changeCanvas);
 borderBtn.addEventListener("click", toggleBorder);
+window.addEventListener('load', changeCanvas)
+const resizeObserver = new ResizeObserver(entries => {
+  let height = window.getComputedStyle(canvas).getPropertyValue('width').replace('px', '')
+  changeCanvas(height)
+})
+resizeObserver.observe(canvas)
 // TODO
 // change shortcut to button
 function resetCanvas() {
   while (canvas.hasChildNodes()) canvas.removeChild(canvas.firstChild);
 }
 
-function changeCanvas() {
+function changeCanvas(canvasHeight) {
   resetCanvas();
-  generatePixel();
+  generatePixel(canvasHeight);
   rainbowMode();
   darkenMode();
 }
 
-function generatePixel() {
+function generatePixel(canvasHeight) {
   let totalPixelSqrt = slider.value;
   let pixelSize = canvasHeight / totalPixelSqrt + "px";
   for (let i = 0; i < totalPixelSqrt; i++) {
@@ -115,4 +120,5 @@ function toggleBorder() {
   }
 }
 
-window.addEventListener('load', changeCanvas)
+
+
