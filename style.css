@@ -63,8 +63,21 @@ h1 {
   max-width: 500px;
 }
 
+footer {
+  margin: 2rem 0 0;
+}
+
 footer p {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  font-size: clamp(0.5rem, 2vw, 1rem)
+}
+
+footer > p > span {
+  display: flex;
+  align-items: center;
+  margin: 0 .3rem;
 }
 
 /* color */
