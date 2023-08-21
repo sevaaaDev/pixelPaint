@@ -15,11 +15,21 @@ for (let mode of btnMode) {
   mode.addEventListener("click", () => {
     if (paintMode === mode.getAttribute("data-mode")) {
       paintMode = "color";
+      removeModeIndicator()
     } else {
       paintMode = mode.getAttribute("data-mode");
+      removeModeIndicator()
+      mode.style.border = '5px solid lightseagreen'
     }
   });
 }
+
+function removeModeIndicator() {
+  for (let mode of btnMode) {
+    mode.style.border = '3px solid black'
+  }
+}
+
 
 function resizeCanvas(entries) {
   changeCanvas(entries[0].contentRect.width);

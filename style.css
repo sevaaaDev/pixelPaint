@@ -106,3 +106,9 @@ footer p {
 .border-on {
   border: 1px solid gray;
 }
+
+/* pseudo */
+
+button:hover {
+  scale: 1.2;
+}
