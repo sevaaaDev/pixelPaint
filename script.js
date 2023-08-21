@@ -68,7 +68,7 @@ function setPixelSize(element, width, height) {
 function changeColor() {
   const pixel = document.querySelectorAll("#canvas .divflex div");
   for (let px of pixel) {
-    px.addEventListener("mouseover", (e) => {
+    px.addEventListener("mouseover", () => {
       if (paintMode !== "color") return;
       px.style.backgroundColor = getColor();
     });
@@ -83,7 +83,7 @@ function getColor() {
 function eraserMode() {
   const pixel = document.querySelectorAll("#canvas .divflex div");
   for (let px of pixel) {
-    px.addEventListener("mouseover", (e) => {
+    px.addEventListener("mouseover", () => {
       if (paintMode !== "eraser") return;
       px.style.backgroundColor = "white";
     });
@@ -92,10 +92,10 @@ function eraserMode() {
 
 function rainbowMode() {
   const pixel = document.querySelectorAll("#canvas .divflex div");
-  for (let i = 0; i < pixel.length; i++) {
-    pixel[i].addEventListener("mouseover", (e) => {
+  for (let px of pixel) {
+    px.addEventListener("mouseover", () => {
       if (paintMode !== "rainbow") return;
-      pixel[i].style.backgroundColor = getRandomColor();
+      px.style.backgroundColor = getRandomColor();
     });
   }
 }
@@ -110,16 +110,16 @@ function getRandomColor() {
 
 function darkenMode() {
   const pixel = document.querySelectorAll("#canvas .divflex div");
-  for (let i = 0; i < pixel.length; i++) {
-    pixel[i].addEventListener("mouseover", (e) => {
+  for (let px of pixel) {
+    px.addEventListener("mouseover", () => {
       if (paintMode !== "darkening") return;
-      const compStyle = window.getComputedStyle(pixel[i]);
+      const compStyle = window.getComputedStyle(px);
       const colorValueRGB = compStyle.getPropertyValue("background-color");
       const colorArr = colorValueRGB
         .substring(4, colorValueRGB.length - 1)
         .replace(/ /g, "")
         .split(",");
-      pixel[i].style.backgroundColor = `rgb(
+      px.style.backgroundColor = `rgb(
         ${colorArr[0] - 25.5},
         ${colorArr[1] - 25.5},
         ${colorArr[2] - 25.5}
@@ -135,7 +135,7 @@ function changeSliderNum() {
 
 function toggleBorder() {
   const pixel = document.querySelectorAll("#canvas .divflex div");
-  for (let i = 0; i < pixel.length; i++) {
-    pixel[i].classList.toggle("border-on");
+  for (let px of pixel) {
+    px.classList.toggle("border-on");
   }
 }
