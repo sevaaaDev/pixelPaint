@@ -41,7 +41,7 @@ h1 {
   display: block;
 }
 
-.btn {
+.btn-mode, .btn {
   display: flex;
   justify-content: center;
   padding: .2rem;
