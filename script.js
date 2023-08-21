@@ -2,17 +2,31 @@ const slider = document.querySelector(".size-slider");
 const resetBtn = document.querySelector(".btn-reset");
 const borderBtn = document.querySelector(".btn-border");
 const canvas = document.querySelector("#canvas");
+const btnMode = document.querySelectorAll(".btn-mode");
+let paintMode = "color";
 slider.addEventListener("input", changeCanvas);
 resetBtn.addEventListener("click", changeCanvas);
 borderBtn.addEventListener("click", toggleBorder);
-window.addEventListener('load', changeCanvas)
-const resizeObserver = new ResizeObserver(entries => {
-  let height = window.getComputedStyle(canvas).getPropertyValue('width').replace('px', '')
-  changeCanvas(height)
-})
-resizeObserver.observe(canvas)
-// TODO
-// change shortcut to button
+window.addEventListener("load", changeCanvas);
+const resizeObserver = new ResizeObserver((entries) => {
+  let height = window
+    .getComputedStyle(canvas)
+    .getPropertyValue("width")
+    .replace("px", "");
+  changeCanvas(height);
+});
+resizeObserver.observe(canvas);
+
+for (let mode of btnMode) {
+  mode.addEventListener("click", () => {
+    if (paintMode === mode.getAttribute("data-mode")) {
+      paintMode = "color";
+    } else {
+      paintMode = mode.getAttribute("data-mode");
+    }
+  });
+}
+
 function resetCanvas() {
   while (canvas.hasChildNodes()) canvas.removeChild(canvas.firstChild);
 }
@@ -20,6 +34,7 @@ function resetCanvas() {
 function changeCanvas(canvasHeight) {
   resetCanvas();
   generatePixel(canvasHeight);
+  eraserMode();
   rainbowMode();
   darkenMode();
 }
@@ -52,15 +67,10 @@ function setPixelSize(element, width, height) {
 
 function changeColor() {
   const pixel = document.querySelectorAll("#canvas .divflex div");
-  for (let i = 0; i < pixel.length; i++) {
-    pixel[i].addEventListener("mouseover", (e) => {
-      if (e.shiftKey && !e.altKey) {
-        pixel[i].style.backgroundColor = "white";
-        return;
-      }
-      if (!e.altKey) {
-        pixel[i].style.backgroundColor = getColor();
-      }
+  for (let px of pixel) {
+    px.addEventListener("mouseover", (e) => {
+      if (paintMode !== "color") return;
+      px.style.backgroundColor = getColor();
     });
   }
 }
@@ -70,11 +80,21 @@ function getColor() {
   return colorPicker.value;
 }
 
+function eraserMode() {
+  const pixel = document.querySelectorAll("#canvas .divflex div");
+  for (let px of pixel) {
+    px.addEventListener("mouseover", (e) => {
+      if (paintMode !== "eraser") return;
+      px.style.backgroundColor = "white";
+    });
+  }
+}
+
 function rainbowMode() {
   const pixel = document.querySelectorAll("#canvas .divflex div");
   for (let i = 0; i < pixel.length; i++) {
     pixel[i].addEventListener("mouseover", (e) => {
-      if (!e.ctrlKey) return;
+      if (paintMode !== "rainbow") return;
       pixel[i].style.backgroundColor = getRandomColor();
     });
   }
@@ -92,7 +112,7 @@ function darkenMode() {
   const pixel = document.querySelectorAll("#canvas .divflex div");
   for (let i = 0; i < pixel.length; i++) {
     pixel[i].addEventListener("mouseover", (e) => {
-      if (!e.altKey) return;
+      if (paintMode !== "darkening") return;
       const compStyle = window.getComputedStyle(pixel[i]);
       const colorValueRGB = compStyle.getPropertyValue("background-color");
       const colorArr = colorValueRGB
@@ -119,6 +139,3 @@ function toggleBorder() {
     pixel[i].classList.toggle("border-on");
   }
 }
-
-
-
