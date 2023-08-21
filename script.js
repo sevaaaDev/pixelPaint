@@ -8,13 +8,7 @@ slider.addEventListener("input", changeCanvas);
 resetBtn.addEventListener("click", changeCanvas);
 borderBtn.addEventListener("click", toggleBorder);
 window.addEventListener("load", changeCanvas);
-const resizeObserver = new ResizeObserver((entries) => {
-  let height = window
-    .getComputedStyle(canvas)
-    .getPropertyValue("width")
-    .replace("px", "");
-  changeCanvas(height);
-});
+const resizeObserver = new ResizeObserver(resizeCanvas);
 resizeObserver.observe(canvas);
 
 for (let mode of btnMode) {
@@ -25,6 +19,10 @@ for (let mode of btnMode) {
       paintMode = mode.getAttribute("data-mode");
     }
   });
+}
+
+function resizeCanvas(entries) {
+  changeCanvas(entries[0].contentRect.width);
 }
 
 function resetCanvas() {
