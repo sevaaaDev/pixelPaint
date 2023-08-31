@@ -49,8 +49,8 @@ function changeCanvas(canvasHeight) {
 
 function generatePixel(canvasHeight) {
   let totalPixel = (slider.value)**2;
-  canvas.style.gridTemplateColumns = `repeat(${slider.value}, minmax(1px, 1fr))`
-  canvas.style.gridTemplateRows = `repeat(${slider.value},  minmax(1px, 1fr))`
+  canvas.style.gridTemplateColumns = `repeat(${slider.value}, 1fr)`
+  canvas.style.gridTemplateRows = `repeat(${slider.value},  1fr)`
   canvas.style.height = `${canvasHeight}px`
   for (let i = 0; i < totalPixel; i++) {
     const pixel = document.createElement("div");
