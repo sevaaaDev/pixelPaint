@@ -48,33 +48,22 @@ function changeCanvas(canvasHeight) {
 }
 
 function generatePixel(canvasHeight) {
-  let totalPixelSqrt = slider.value;
-  let pixelSize = canvasHeight / totalPixelSqrt + "px";
-  for (let i = 0; i < totalPixelSqrt; i++) {
-    const pixelFlex = document.createElement("div");
-    pixelFlex.classList.add("divflex");
-    pixelFlex.style.display = "flex";
-    canvas.appendChild(pixelFlex);
-    for (let i = 0; i < totalPixelSqrt; i++) {
-      const pixel = document.createElement("div");
-      setPixelSize(pixel, pixelSize, pixelSize);
-      pixel.classList.add("border-on");
-      pixel.style.backgroundColor = "white";
-      pixel.style.boxSizing = "border-box";
-      pixelFlex.appendChild(pixel);
-    }
+  let totalPixel = (slider.value)**2;
+  canvas.style.gridTemplateColumns = `repeat(${slider.value}, minmax(1px, 1fr))`
+  canvas.style.gridTemplateRows = `repeat(${slider.value},  minmax(1px, 1fr))`
+  canvas.style.height = `${canvasHeight}px`
+  for (let i = 0; i < totalPixel; i++) {
+    const pixel = document.createElement("div");
+    pixel.style.backgroundColor = '#fff'
+    pixel.classList.add('border-on')
+    canvas.appendChild(pixel);
   }
   changeColor();
   changeSliderNum();
 }
 
-function setPixelSize(element, width, height) {
-  element.style.width = width;
-  element.style.height = height;
-}
-
 function changeColor() {
-  const pixel = document.querySelectorAll("#canvas .divflex div");
+  const pixel = document.querySelectorAll("#canvas div");
   for (let px of pixel) {
     px.addEventListener("mouseover", () => {
       if (paintMode !== "color") return;
@@ -89,7 +78,7 @@ function getColor() {
 }
 
 function eraserMode() {
-  const pixel = document.querySelectorAll("#canvas .divflex div");
+  const pixel = document.querySelectorAll("#canvas div");
   for (let px of pixel) {
     px.addEventListener("mouseover", () => {
       if (paintMode !== "eraser") return;
@@ -99,7 +88,7 @@ function eraserMode() {
 }
 
 function rainbowMode() {
-  const pixel = document.querySelectorAll("#canvas .divflex div");
+  const pixel = document.querySelectorAll("#canvas div");
   for (let px of pixel) {
     px.addEventListener("mouseover", () => {
       if (paintMode !== "rainbow") return;
@@ -117,7 +106,7 @@ function getRandomColor() {
 }
 
 function darkenMode() {
-  const pixel = document.querySelectorAll("#canvas .divflex div");
+  const pixel = document.querySelectorAll("#canvas div");
   for (let px of pixel) {
     px.addEventListener("mouseover", () => {
       if (paintMode !== "darkening") return;
@@ -142,7 +131,7 @@ function changeSliderNum() {
 }
 
 function toggleBorder() {
-  const pixel = document.querySelectorAll("#canvas .divflex div");
+  const pixel = document.querySelectorAll("#canvas div");
   for (let px of pixel) {
     px.classList.toggle("border-on");
   }
