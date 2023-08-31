@@ -19,7 +19,7 @@ for (let mode of btnMode) {
     } else {
       paintMode = mode.getAttribute("data-mode");
       removeModeIndicator()
-      mode.style.border = '5px solid lightseagreen'
+      mode.style.border = '3px solid hsl(318, 94%, 49%)'
     }
   });
 }
